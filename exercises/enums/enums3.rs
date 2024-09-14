@@ -2,10 +2,12 @@
 // 解决所有的 TODOs 以让测试通过！
 // 执行 `rustlings hint enums3` 或在观察模式下使用 `hint` 子命令来获取提示。
 
-// I AM NOT DONE
 
 enum Message {
-    // TODO: 根据它们的用法，实现信息的变量类型
+    Move( Point ),
+    Echo(String),
+    ChangeColor(u8, u8, u8),
+    Quit,
 }
 
 struct Point {
@@ -39,6 +41,20 @@ impl State {
     fn process(&mut self, message: Message) {
         // TODO: 创建一个匹配表达式来处理不同的消息类型
         // 记住：将元组作为函数参数时，需要额外的括号：fn function((t, u, p, l, e))
+        match message {
+            Message::Move(Point) => {
+                self.move_position(Point);
+            }
+            Message::Echo(String) => {
+                self.echo(String);
+            }
+            Message::ChangeColor(a, b, c) => {
+                self.change_color((a, b, c));
+            }
+            Message::Quit => {
+                self.quit();
+            }
+        }
     }
 }
 
